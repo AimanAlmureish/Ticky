@@ -27,10 +27,19 @@ export default class App extends React.PureComponent {
     });
   };
 
+  handleCancle = e => {
+    e.preventDefault();
+    this.setState({
+      title: "",
+      date: "",
+      id: ""
+    });
+  };
+
   handleSubmit = e => {
     e.preventDefault();
     if (this.state.title.length > 0) {
-      if (this.state.id != "") {
+      if (this.state.id !== "") {
         let obj = {
           title: this.state.title,
           date: this.state.date
@@ -74,6 +83,7 @@ export default class App extends React.PureComponent {
     return (
       <div className="App">
         <FormComponent
+          handleCancle={this.handleCancle}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           title={this.state.title}

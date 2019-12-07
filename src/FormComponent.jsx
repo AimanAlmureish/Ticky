@@ -4,7 +4,7 @@ const FormComponent = props => {
   return (
     <fieldset>
       <legend>New User</legend>
-      <form onSubmit={props.handleSubmit} autoComplete="off">
+      <form autoComplete="off">
         <input
           type="text"
           name="title"
@@ -19,7 +19,8 @@ const FormComponent = props => {
           onChange={props.handleChange}
           placeholder="Date"
         />
-        <button>Save</button>
+        <button onClick={props.handleSubmit}>Save</button>
+        <button onClick={props.handleCancle}>Cancel</button>
       </form>
     </fieldset>
   );
