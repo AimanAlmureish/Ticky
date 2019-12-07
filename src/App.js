@@ -29,35 +29,37 @@ export default class App extends React.PureComponent {
 
   handleSubmit = e => {
     e.preventDefault();
-    if (this.state.id != "") {
-      let obj = {
-        title: this.state.title,
-        date: this.state.date
-      };
-      this.setState({
-        items: this.state.items.map(element => {
-          if (element.id === this.state.id) {
-            obj.id = this.state.id;
-            return obj;
-          }
-          return element;
-        }),
-        id: "",
-        title: "",
-        date: ""
-      });
-    } else {
-      let copy = {
-        title: this.state.title,
-        date: this.state.date,
-        id: Date.now()
-      };
+    if (this.state.title.length > 0) {
+      if (this.state.id != "") {
+        let obj = {
+          title: this.state.title,
+          date: this.state.date
+        };
+        this.setState({
+          items: this.state.items.map(element => {
+            if (element.id === this.state.id) {
+              obj.id = this.state.id;
+              return obj;
+            }
+            return element;
+          }),
+          id: "",
+          title: "",
+          date: ""
+        });
+      } else {
+        let copy = {
+          title: this.state.title,
+          date: this.state.date,
+          id: Date.now()
+        };
 
-      this.setState({
-        items: [...this.state.items, copy],
-        title: "",
-        date: ""
-      });
+        this.setState({
+          items: [...this.state.items, copy],
+          title: "",
+          date: ""
+        });
+      }
     }
   };
   remove = id => {
